@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="logo.png">
+    <title>Your Lessons</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-logo">English with ❤️</div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="lessons.html">Lessons</a>
+            <a href="quiz.html">Quiz</a>
+            <a href="reading.html">Reading</a>
+        </div>
+        <button id="theme-toggle">🌙</button>
+    </nav>
+
+    <div class="filter-btns">
+        <button onclick="displayCards('All')">Everything</button>
+        <button onclick="displayCards('Articles')">A vs An</button>
+        <button onclick="displayCards('Vowels')">Vowel Rules</button>
+        <button onclick="displayCards('Phonetics')">Pronunciation</button>
+    </div>
+
+    <div id="lesson-shelf" class="book-container"></div>
+    <section class="phonetics-tip">
+    <h3>Phonetics Tip of the Day 👄</h3>
+    <div class="tip-card">
+        <p>The <strong>/θ/</strong> sound (as in "Thank you")</p>
+        <p><em>Place your tongue between your teeth and blow air out!</em></p>
+    </div>
+</section>
+
+    <script src="script.js"></script>
+</body>
+</html>
