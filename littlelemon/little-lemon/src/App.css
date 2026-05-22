@@ -1,38 +1,183 @@
-.App {
+/* ==========================================
+   1. BRAND VARIABLES & BASE RESETS
+   ========================================== */
+:root {
+  --primary-green: #495E57;
+  --primary-yellow: #F4CE14;
+  --secondary-peach: #EE9972;
+  --secondary-cream: #FBDABB;
+  --light-gray: #EDEFEE;
+  --dark-charcoal: #333333;
+  
+  --font-title: 'Markazi Text', serif;
+  --font-body: 'Karla', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--dark-charcoal);
+  background-color: #FFFFFF;
+  line-height: 1.5;
+}
+
+/* ==========================================
+   2. TYPOGRAPHY STYLING (Figma Specs)
+   ========================================== */
+h1, h2, h3, h4 {
+  font-family: var(--font-title);
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+h1 { font-size: 3.5rem; color: var(--primary-yellow); line-height: 1.1; }
+h2 { font-size: 2.5rem; color: var(--primary-green); }
+h3 { font-size: 1.25rem; color: var(--dark-charcoal); font-weight: 700; font-family: var(--font-body); }
+
+p {
+  font-size: 1.1rem;
+  color: var(--dark-charcoal);
+  margin-bottom: 1rem;
+}
+
+span.highlight {
+  color: var(--secondary-peach);
+  font-weight: bold;
+}
+
+/* ==========================================
+   3. MOBILE-FIRST RESPONSIVE LAYOUT MATRIX
+   ========================================== */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Semantic Section Sizing & Containment */
+header, nav, main, footer {
+  padding: 1rem 1.5rem;
+  width: 100%;
+}
+
+header {
+  background-color: #FFFFFF;
+  display: flex;
+  justify-content: center;
+}
+
+nav {
+  background-color: var(--primary-green);
+}
+
+/* Navigation Lists */
+nav ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  list-style: none;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+nav a {
+  color: #FFFFFF;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: color 0.2s ease-in-out;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+nav a:hover, nav a:active {
+  color: var(--primary-yellow);
+}
+
+/* Main Content Area Hero Box */
+.hero-section {
+  background-color: var(--primary-green);
+  color: #FFFFFF;
+  padding: 2rem 1.5rem;
+  border-radius: 16px;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.hero-section p {
+  color: var(--light-gray);
+}
+
+/* Image Optimization Rules */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.logo-img {
+  max-height: 50px;
+}
+
+footer {
+  background-color: var(--dark-charcoal);
+  color: var(--light-gray);
+  margin-top: auto;
+  text-align: center;
+}
+
+/* ==========================================
+   4. DESKTOP MEDIA QUERIES (Screens > 768px)
+   ========================================== */
+@media (min-width: 768px) {
+  .app-container {
+    display: grid;
+    grid-template-areas: 
+      "header nav"
+      "main main"
+      "footer footer";
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto 1fr auto;
+    max-width: 1200px;
+    margin: 0 auto;
   }
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  header {
+    grid-area: header;
+    padding: 1.5rem 2rem;
+    justify-content: flex-start;
   }
-  to {
-    transform: rotate(360deg);
+
+  nav {
+    grid-area: nav;
+    background-color: #FFFFFF; /* Figma desktop nav has white background */
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 1.5rem 2rem;
+  }
+
+  nav ul {
+    flex-direction: row;
+    gap: 2rem;
+  }
+
+  nav a {
+    color: var(--primary-green);
+  }
+
+  main {
+    grid-area: main;
+    padding: 2rem;
+  }
+
+  .hero-section {
+    padding: 3rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
   }
 }

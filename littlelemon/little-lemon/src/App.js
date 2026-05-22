@@ -6,14 +6,14 @@ import Main from './Main';
 import Footer from './Footer';
 
 function App() {
-    return (
-        <>
-            <Header />
-            <Nav />
-            <Main />
-            <Footer />
-        </>
-    );
+  return (
+    <div className="app-container">
+      <Header />
+      <Nav />
+      <Main />
+      <Footer />
+    </div>
+  );
 }
 
 export default App;
