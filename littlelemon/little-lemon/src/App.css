@@ -1,18 +1,25 @@
-/* ==========================================
-   1. BRAND VARIABLES & BASE RESETS
-   ========================================== */
+/* ==========================================================================
+   LITTLE LEMON BRAND STYLE GUIDE & DESIGN SYSTEM VARIABLE REGISTRY
+   ========================================================================== */
 :root {
+  /* Brand Core Palettes */
   --primary-green: #495E57;
   --primary-yellow: #F4CE14;
   --secondary-peach: #EE9972;
   --secondary-cream: #FBDABB;
+  
+  /* Neutral Palettes */
   --light-gray: #EDEFEE;
   --dark-charcoal: #333333;
-  
-  --font-title: 'Markazi Text', serif;
+  --pure-white: #FFFFFF;
+  --error-red: #D32F2F;
+
+  /* Typography Weight Registry */
+  --font-display: 'Markazi Text', serif;
   --font-body: 'Karla', sans-serif;
 }
 
+/* Base Document Reset Layouts */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -22,227 +29,253 @@
 body {
   font-family: var(--font-body);
   color: var(--dark-charcoal);
-  background-color: #FFFFFF;
+  background-color: var(--pure-white);
   line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* ==========================================
-   2. TYPOGRAPHY STYLING (Figma Specs)
-   ========================================== */
-h1, h2, h3, h4 {
-  font-family: var(--font-title);
-  font-weight: 500;
-  margin-bottom: 0.5rem;
-}
-
-h1 { font-size: 3.5rem; color: var(--primary-yellow); line-height: 1.1; }
-h2 { font-size: 2.5rem; color: var(--primary-green); }
-h3 { font-size: 1.25rem; color: var(--dark-charcoal); font-weight: 700; font-family: var(--font-body); }
-
-p {
-  font-size: 1.1rem;
-  color: var(--dark-charcoal);
-  margin-bottom: 1rem;
-}
-
-span.highlight {
-  color: var(--secondary-peach);
-  font-weight: bold;
-}
-
-/* ==========================================
-   3. MOBILE-FIRST RESPONSIVE LAYOUT MATRIX
-   ========================================== */
-.app-container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-/* Semantic Section Sizing & Containment */
-header, nav, main, footer {
-  padding: 1rem 1.5rem;
-  width: 100%;
-}
-
+/* ==========================================================================
+   NAVIGATION HEADER BAR CONTAINER
+   ========================================================================== */
 header {
-  background-color: #FFFFFF;
+  background-color: var(--pure-white);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
 }
 
-nav {
-  background-color: var(--primary-green);
+.logo {
+  height: 45px;
+  width: auto;
+  object-fit: contain;
 }
 
-/* Navigation Lists */
 nav ul {
   display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
   list-style: none;
-  text-align: center;
+  gap: 2rem;
+  align-items: center;
 }
 
 nav a {
-  color: #FFFFFF;
   text-decoration: none;
-  font-weight: 600;
+  color: var(--primary-green);
+  font-weight: 700;
   font-size: 1.1rem;
   transition: color 0.2s ease-in-out;
 }
 
-nav a:hover, nav a:active {
+nav a:hover {
   color: var(--primary-yellow);
 }
 
-/* Main Content Area Hero Box */
+/* ==========================================================================
+   LANDING HOME HERO LAYOUT ZONE
+   ========================================================================== */
 .hero-section {
   background-color: var(--primary-green);
-  color: #FFFFFF;
-  padding: 2rem 1.5rem;
-  border-radius: 16px;
+  color: var(--pure-white);
+  padding: 3rem 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4rem;
+  overflow: hidden;
+}
+
+.hero-content {
+  max-width: 450px;
+}
+
+.hero-content h1 {
+  font-family: var(--font-display);
+  font-size: 4rem;
+  color: var(--primary-yellow);
+  line-height: 0.9;
+  margin-bottom: 0.2rem;
+}
+
+.hero-content h2 {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+
+.hero-content p {
+  font-size: 1.1rem;
   margin-bottom: 2rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-}
-
-.hero-section p {
   color: var(--light-gray);
 }
 
-/* Image Optimization Rules */
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
+.hero-image-wrapper img {
+  width: 320px;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
 }
 
-.logo-img {
-  max-height: 50px;
-}
-
-footer {
-  background-color: var(--dark-charcoal);
-  color: var(--light-gray);
-  margin-top: auto;
-  text-align: center;
-}
-
-/* ==========================================
-   4. DESKTOP MEDIA QUERIES (Screens > 768px)
-   ========================================== */
-@media (min-width: 768px) {
-  .app-container {
-    display: grid;
-    grid-template-areas: 
-      "header nav"
-      "main main"
-      "footer footer";
-    grid-template-columns: auto 1fr;
-    grid-template-rows: auto 1fr auto;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  header {
-    grid-area: header;
-    padding: 1.5rem 2rem;
-    justify-content: flex-start;
-  }
-
-  nav {
-    grid-area: nav;
-    background-color: #FFFFFF; /* Figma desktop nav has white background */
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    padding: 1.5rem 2rem;
-  }
-
-  nav ul {
-    flex-direction: row;
-    gap: 2rem;
-  }
-
-  nav a {
-    color: var(--primary-green);
-  }
-
-  main {
-    grid-area: main;
-    padding: 2rem;
-  }
-
-  .hero-section {
-    padding: 3rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    align-items: center;
-  }
-}
-/* Custom Elements & Layout Extensions */
-.action-btn {
+/* Action Button Typography */
+.cta-btn, .submit-btn {
   background-color: var(--primary-yellow);
   color: var(--dark-charcoal);
-  border: none;
-  padding: 0.75rem 1.5rem;
   font-family: var(--font-body);
-  font-size: 1rem;
-  font-weight: bold;
-  border-radius: 16px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 12px;
   cursor: pointer;
-  transition: transform 0.2s ease, background-color 0.2s ease;
+  text-decoration: none;
+  display: inline-block;
+  transition: transform 0.1s ease, background-color 0.2s ease;
 }
 
-.action-btn:hover {
-  background-color: #E6C200;
-  transform: scale(1.02);
+.cta-btn:hover, .submit-btn:hover {
+  background-color: #e5be10;
+  transform: translateY(-2px);
 }
 
-.specials-section {
-  padding: 2rem 0;
+.cta-btn:active, .submit-btn:active {
+  transform: translateY(0);
 }
 
-.specials-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 2rem;
+/* ==========================================================================
+   RESERVATION BOOKING COMPONENT LAYOUT
+   ========================================================================== */
+.booking-page {
+  max-width: 600px;
+  margin: 3rem auto;
+  padding: 0 1.5rem;
 }
 
-.specials-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.5rem;
+.booking-hero {
+  text-align: center;
+  margin-bottom: 2.5rem;
 }
 
-.dish-card {
-  background-color: #FFFFFF;
-  border-radius: 16px;
-  padding: 1.5rem;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.04);
-  border: 1px solid var(--light-gray);
+.booking-hero h1 {
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  color: var(--primary-green);
 }
 
-.dish-card h3 {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.dish-card h3 span {
-  color: var(--secondary-peach);
+.booking-hero p {
+  color: #666;
   font-size: 1.1rem;
 }
 
-.page-padding {
-  padding: 3rem 0;
+/* Controlled Form Alignment UI */
+form {
+  background-color: var(--light-gray);
+  padding: 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
-/* Tablet & Desktop Layout Scaling Adjustments */
-@media (min-width: 768px) {
-  .specials-grid {
-    grid-template-columns: repeat(3, 1fr);
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+form label {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--primary-green);
+}
+
+form input, form select {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  padding: 0.8rem 1rem;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  background-color: var(--pure-white);
+  outline: none;
+  transition: border-color 0.2s ease;
+  width: 100%;
+}
+
+form input:focus, form select:focus {
+  border-color: var(--primary-green);
+}
+
+/* Form Interactivity Validation Feedback Styles */
+.input-error {
+  border-color: var(--error-red) !important;
+  background-color: #FFF8F8;
+}
+
+.error-message {
+  font-size: 0.85rem;
+  color: var(--error-red);
+  font-weight: 700;
+  margin-top: 0.2rem;
+}
+
+.submit-btn {
+  margin-top: 1rem;
+  width: 100%;
+  text-align: center;
+}
+
+/* ==========================================================================
+   CONFIRMATION CARD ACCENTS
+   ========================================================================== */
+.details-card {
+  border-left: 5px solid var(--primary-green);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* ==========================================================================
+   FOOTER ZONE
+   ========================================================================== */
+footer {
+  background-color: var(--primary-green);
+  color: var(--light-gray);
+  text-align: center;
+  padding: 2rem 1rem;
+  margin-top: 5rem;
+  font-size: 0.9rem;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN BREAKPOINTS
+   ========================================================================== */
+@media (max-width: 768px) {
+  .hero-section {
+    flex-direction: column;
+    text-align: center;
+    gap: 2rem;
+    padding: 2.5rem 1.5rem;
+  }
+  
+  .hero-content h1 {
+    font-size: 3.2rem;
+  }
+  
+  .hero-image-wrapper img {
+    width: 100%;
+    max-width: 280px;
+    height: 280px;
+  }
+
+  form {
+    padding: 1.5rem;
   }
 }
